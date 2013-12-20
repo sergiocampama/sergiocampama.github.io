@@ -1,0 +1,22 @@
+#sidebar, #map {
+  height: 600px;
+}
+
+#geofences_list {
+  height: 445px;
+  overflow: auto;
+}
+
+.icon {
+  margin-left: 5px;
+  margin-top: 5px;
+  cursor: pointer;
+}
+
+.polyline_text {
+  resize: none;
+}
+
+#geofences_list .well {
+  background-color: #eee;
+}
