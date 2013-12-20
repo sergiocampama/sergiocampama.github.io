@@ -1,0 +1,96 @@
+---
+title: "jQuery Collapsible List"
+layout: default
+---
+
+<link rel="stylesheet" href="/stylesheets/demos/collapsible_list/jquery.collapsibleList.css">
+
+<div class='row'>
+  <div class='col-sm-12'>
+    <div class='page-header'>
+      <h1 class='pull-left'>
+        <i class='icon-list'></i>
+        <span>jQuery Collapsible List</span>
+      </h1>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-sm-12">
+    <p class="lead">
+      This project was born out me wanting to use <a href="http://code.stephenmorley.org/javascript/collapsible-lists/">this project</a>, but I wasn't to keen on the api provided, so I converted it into a jQuery plugin. The source can be found in <a href="https://github.com/sergiocampama/jquery-collapsible-list">Github</a>.
+    </p>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-sm-6">
+    <legend>Tree View Example</legend>
+    <ul class="collapsibleList treeView">
+      <li>Parent Item
+        <ul>
+          <li>Child item</li>
+          <li>Child item</li>
+        </ul>
+      </li>
+      <li>Parent Item
+        <ul>
+          <li>Child Item
+            <ul>
+              <li>SubChild Item
+                <ul>
+                  <li>SubSubChild</li>
+                  <li>SubSubChild
+                    <ul>
+                      <li>SubSubSubChild</li>
+                      <li>SubSubSubChild</li>
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+              <li>SubChild Item</li>
+            </ul>
+          </li>
+          <li>Child Item</li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+
+  <div class="col-sm-6">
+    <legend>Normal View Example</legend>
+            <ul class="collapsibleList">
+              <li>Parent Item
+                <ul>
+                  <li>Child item</li>
+                  <li>Child item</li>
+                </ul>
+              </li>
+              <li>Parent Item
+                <ul>
+                  <li id="button">Child Item
+                    <ul>
+                      <li>SubChild Item
+                        <ul>
+                          <li>SubSubChild</li>
+                          <li>SubSubChild
+                            <ul>
+                              <li>SubSubSubChild</li>
+                              <li>SubSubSubChild</li>
+                            </ul>
+                          </li>
+                        </ul>
+                      </li>
+                      <li>SubChild Item</li>
+                    </ul>
+                  </li>
+                  <li>Child Item</li>
+                </ul>
+              </li>
+            </ul>
+  </div>
+</div>
+
+<script src="/javascripts/demos/collapsible_list/jquery.collapsibleList.js"></script>
+<script src="/javascripts/demos/collapsible_list/app.js"></script>
