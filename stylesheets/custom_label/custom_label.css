@@ -1,0 +1,27 @@
+.trackable_label_container {
+  margin: -28px 0 0 -22px;
+  position: relative;
+  z-index: 400;
+}
+
+.trackable_label {
+  width: 70px;
+  background: url("../images/bg.png") repeat-x #f5f5f5;
+  color: #333; padding: 1px 0;
+  text-align: center;
+  border: 1px solid #fff;
+  -moz-border-radius: 2px;
+  -webkit-border-radius: 2px;
+  border-radius: 2px;
+  font-size: 0.75em;
+  font-weight: bold;
+  text-shadow: 0 1px 0 #fff;
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.7);
+  -moz-box-shadow: 0 0 3px rgba(0, 0, 0, 0.7);
+  -webkit-box-shadow: 0 0 3px rgba(0, 0, 0, 0.7);
+  color: red;
+}
+
+.trackable_label.active{
+  color: green;
+}
