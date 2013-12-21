@@ -1,0 +1,76 @@
+---
+layout: post
+title:  "Dynamic DNS with Digital Ocean"
+date:   20-12-2013
+categories: digitalocean ruby api
+comments: true
+---
+
+<p>Hi! Today we're going to learn how to use Digital Ocean's API to create our own dynamic DNS, maybe for some server you've got at home and want to get to from the office? That's what I do with it!</p>
+
+<p>First of all, the requirements! They're fairly simple: on the server side, we will need ruby, and from Digital Ocean, we will need a subdomain record to be already created and set to an A record type. So go ahead and create one now if you haven't. Also, we're going to be using signatureio's digitalocean gem (<a href="https://github.com/signatureio/digitalocean">Github</a>) but since the RubyGems version is outdated, I forked the gem and uploaded it with the name digitalocean2, so install it with the following command</p>
+
+<pre class="well">
+  gem install digitalocean2 -v 0.0.4
+</pre>
+
+After you have the gem installed, create a file named <code>dyndns.rb</code> on your home, and populate it with the following snippet:
+
+<pre class="well">
+  #!&lt;path/to/your/ruby&gt;
+  require 'digitalocean2'
+
+  CLIENT_ID = "&lt;DigitalOcean ClientId&gt;"
+  API_KEY = "&lt;DigitalOcean ApiKey&gt;"
+
+  DOMAIN_ID = &lt;DigitalOcean's Domain Id&gt;
+  RECORD_ID = &lt;DigitalOcean Record Id&gt;
+
+  new_ip = `wget -qO- ipecho.net/plain`;
+
+  Digitalocean2.client_id = CLIENT_ID
+  Digitalocean2.api_key = API_KEY
+
+  Digitalocean2::Record.edit(DOMAIN_ID, RECORD_ID, {data: new_ip})
+</pre>
+
+<p>Remember to find which ruby you have installed and replace the top line. You can find your ruby with the following command:</p>
+
+<pre class="well">
+  which ruby
+</pre>
+
+<p>Then we make the file executable with:</p>
+
+<pre class="well">
+  chmod +x dyndns.rb
+</pre>
+
+<p>To get the external IP to your network, we use the ipecho.net free service. This is the IP that will be configured in Digital Ocean, as this is the IP to your house's modem.</p>
+
+<p>You can get Digital Ocean's ClientId and ApiKey from <a href="https://cloud.digitalocean.com/api_access">this website</a> (be sure to be logged in). The Domain Id is the reference to the domain you have configured in Digital Ocean, like <code>example.com</code>, and the Record Id is the reference to a record of that domain, for example, the A record for <code>home.example.com</code>. To get them, we will be using the following commands from the ruby interpreter IRB. We are assuming that you only have one domain configured in Digital Ocean.</p
+>
+
+<pre class="well">
+  $ irb
+  > require 'digitalocean'
+  > Digitalocean.client_id = CLIENT_ID
+  > Digitalocean.api_key = API_KEY
+  > Digitalocean::Domain.all
+  > domain_id = Digitalocean::Domain.all.domains.first.id
+  > records = Digitalocean::Record.all(41497).records
+  > record_id = records.select{|r| r.name == "&lt;subdomain name&gt;"}.last.id
+  > puts "Domain Id: #{domain_id} and Record Id: #{record_id}"
+</pre>
+
+<p>With that information, you can now complete the <code>dyndns.rb</code> file with the correct data. Now we're going to configure cron to run the <code>dyndns.rb</code> script to update the DNS every hour.</p>
+
+<pre class="well">
+
+  #To edit the crontab, use crontab -e
+
+  0 * * * * /home/user/dyndns.rb
+
+</pre>
+
+<p>That's it! You now have your own dynamic DNS for your home server! You'll probably want to customize this instructions and place the script somewhere else, it's up to you now.</p>
