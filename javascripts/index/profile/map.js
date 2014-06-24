@@ -4,7 +4,7 @@ $(function(){
     scrollwheel: false,
     zoom: 9,
     mapTypeId: google.maps.MapTypeId.ROADMAP,
-    center: new google.maps.LatLng(-33.471835, -70.647179),
+    center: new google.maps.LatLng(37.339615, -121.895079),
     streetViewControl: false,
     zoomControl: true,
     zoomControlOptions: {
