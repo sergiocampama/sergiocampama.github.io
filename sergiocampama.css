@@ -59,6 +59,10 @@ body {
     justify-content: space-evenly;
 }
 
+.links > a {
+    font-size: 17px;
+}
+
 @media only screen and (max-device-width: 767px) and (orientation: portrait) {
     .content {
         width: 100%;
