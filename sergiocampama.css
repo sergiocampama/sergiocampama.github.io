@@ -97,3 +97,9 @@ body {
         font-size: 36px;
     }
 }
+
+@media only screen and (max-device-width: 767px) and (orientation: landscape) {
+    .links > a {
+        font-size: 24px;
+    }
+}
