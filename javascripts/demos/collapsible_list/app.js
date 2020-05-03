@@ -1,1 +1,0 @@
-$(".collapsibleList").collapsibleList();

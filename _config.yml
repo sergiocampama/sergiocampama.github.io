@@ -1,7 +1,0 @@
-name: Sergio Campamá
-paginate: 10
-paginate_path: "articles/page:num"
-markdown: redcarpet
-pygments: true
-excerpt_separator: "<div class='excerpt'></div>"
-
